@@ -1,7 +1,31 @@
+"use client";
 import React from "react";
+
+import * as z from "zod";
 import { CardWrapper } from "./CardWrapper";
+import { useForm } from "react-hook-form";
+import { LoginSchema } from "../../../shemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 
 export const LoginForm = () => {
+  const form = useForm<z.infer<typeof LoginSchema>>({
+    resolver: zodResolver(LoginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
   return (
     <CardWrapper
       headerLabel="Welcome back"
@@ -9,7 +33,49 @@ export const LoginForm = () => {
       backButtonHref="/auth/register"
       showSocial
     >
-      Login Form
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(() => {})} className="space-y-6">
+          <div className="space-y-4">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      placeholder="john.doe@example.com"
+                      type="email"
+                    />
+                  </FormControl>
+                  <FormMessage>
+                    {form.formState.errors.email?.message}
+                  </FormMessage>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input {...field} placeholder="*****" type="password" />
+                  </FormControl>
+                  <FormMessage>
+                    {form.formState.errors.password?.message}
+                  </FormMessage>
+                </FormItem>
+              )}
+            />
+          </div>
+          <Button type="submit" className="w-full">
+            Log in
+          </Button>
+        </form>
+      </Form>
     </CardWrapper>
   );
 };
