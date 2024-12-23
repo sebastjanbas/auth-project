@@ -10,7 +10,6 @@ import {
     publicRoutes
 } from "@/routes"
 import { NextResponse } from "next/server"
-import next from "next"
  
 export const { auth } = NextAuth(authConfig)
 

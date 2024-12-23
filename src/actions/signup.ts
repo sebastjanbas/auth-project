@@ -4,7 +4,6 @@ import bcrypt from "bcryptjs";
 import { db } from "@/lib/db";
 
 import { SignupSchema } from "../../shemas";
-import { get } from "http";
 import { getUserByEmail } from "@/data/user";
 
 export const signup = async (values: z.infer<typeof SignupSchema>) => {
