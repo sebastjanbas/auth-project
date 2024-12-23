@@ -12,15 +12,17 @@ export const signup = async (values: z.infer<typeof SignupSchema>) => {
     console.log(values);
     const validateField = SignupSchema.safeParse(values);
 
-    if (values.password !== values.confirmPassword) {
-        return { error: "Passwords do not match" };
-    }
-
+    
     if (!validateField.success) {
         return { error: "Invalid fields" } ;
     }
+    
+    const {email, password, confirmPassword, firstName, lastName} = validateField.data; // Destructure the values
+    
+    if (password !== confirmPassword) {
+        return { error: "Passwords do not match" };
+    }
 
-    const {email, password, firstName, lastName} = validateField.data;
     const hashedPassword = await bcrypt.hash(password, 10);
     const existingUser = await getUserByEmail(email);
 
