@@ -1,13 +1,17 @@
 "use client";
 import React from "react";
+import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 
 import { Button } from "../ui/button";
+import { DEFAULT_REDIRECT } from "@/routes";
 
 export const Social = () => {
-  const handleGoogleClick = () => {
-    //todo: implement google login
+  const handleOAuth = (provider: "google" | "github") => {
+    signIn(provider, {
+      callbackUrl: DEFAULT_REDIRECT,
+    });
   };
 
   return (
@@ -16,7 +20,7 @@ export const Social = () => {
         size={"lg"}
         variant={"outline"}
         className="w-full"
-        onClick={handleGoogleClick}
+        onClick={() => handleOAuth("google")}
       >
         <FcGoogle className="w-5 h-5" />
       </Button>
@@ -24,7 +28,7 @@ export const Social = () => {
         size={"lg"}
         variant={"outline"}
         className="w-full"
-        onClick={handleGoogleClick}
+        onClick={() => handleOAuth("github")}
       >
         <FaGithub className="w-5 h-5" />
       </Button>
