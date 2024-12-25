@@ -5,6 +5,7 @@ import authConfig from "@/auth.config"
 import { getUserById } from "./data/user"
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import { db } from "./lib/db"
+import { any } from "zod"
  
 
 // FOR TYPES
@@ -43,14 +44,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
 
   callbacks: {
-    // async signIn({ user }) {
-    //   console.log(user);
-    //   const existingUser = await getUserById(user.id);
-    //   if (!existingUser || !existingUser.emailVerified) {
-    //     return false;
-    //   }
-    //   return true;
-    // },
+    async signIn({ user, account }) {
+      // Allow OAuth without email verification
+      if (account?.provider !== "credentials") return true;
+
+      const existingUser = await getUserById(user.id as any);
+
+      // prevent sign in if email is not verified
+      if (!existingUser?.emailVerified) return false;
+
+      // TODO: Add 2FA check
+
+      return true;
+    },
 
     async session({token, session}) {
       if (token.sub && session.user) {
