@@ -22,7 +22,13 @@ export const LoginSchema = z.object({
     password: z.string().min(1, {
         message: "Please enter your password",
     }),
-});
+
+    code: z.optional(z.string()),
+
+    // code: z.optional(z.string().min(6, {
+    //     message: "Please enter your code",
+    // })),
+    });
 
 export const SignupSchema = z.object({
     firstName: z.string().min(1, {
