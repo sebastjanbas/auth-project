@@ -19,10 +19,8 @@ const DropdownMenuSub = DropdownMenuPrimitive.Sub;
 const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
 
 type DropdownMenuSubTriggerProps = {
-  className?: string;
-  inset?: boolean;
-  children?: React.ReactNode;
-  ref?: React.RefObject<HTMLButtonElement>;
+  inset: boolean;
+  ref: React.RefObject<HTMLButtonElement>;
 } & React.ComponentProps<typeof DropdownMenuPrimitive.SubTrigger>;
 
 const DropdownMenuSubTrigger = ({
@@ -49,9 +47,6 @@ DropdownMenuSubTrigger.displayName =
   DropdownMenuPrimitive.SubTrigger.displayName;
 
 type DropdownMenuSubContentProps = {
-  className?: string;
-  inset?: boolean;
-  children?: React.ReactNode;
   ref?: React.RefObject<HTMLButtonElement>;
 } & React.ComponentProps<typeof DropdownMenuPrimitive.SubContent>;
 
@@ -73,11 +68,7 @@ DropdownMenuSubContent.displayName =
   DropdownMenuPrimitive.SubContent.displayName;
 
 type DropdownMenuContentProps = {
-  className?: string;
-  sideOffset?: number;
-  inset?: boolean;
-  children?: React.ReactNode;
-  ref?: React.RefObject<HTMLButtonElement>;
+  ref: React.RefObject<HTMLButtonElement>;
 } & React.ComponentProps<typeof DropdownMenuPrimitive.Content>;
 
 const DropdownMenuContent = ({
@@ -102,9 +93,7 @@ const DropdownMenuContent = ({
 DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
 
 type DropdownMenuItemProps = {
-  className?: string;
   inset?: boolean;
-  children?: React.ReactNode;
   ref?: React.RefObject<HTMLButtonElement>;
 } & React.ComponentProps<typeof DropdownMenuPrimitive.Item>;
 
@@ -127,9 +116,6 @@ const DropdownMenuItem = ({
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
 
 type DropdownMenuCheckboxItemProps = {
-  className?: string;
-  inset?: boolean;
-  children?: React.ReactNode;
   ref?: React.RefObject<HTMLButtonElement>;
 } & React.ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem>;
 
@@ -161,9 +147,6 @@ DropdownMenuCheckboxItem.displayName =
   DropdownMenuPrimitive.CheckboxItem.displayName;
 
 type DropdownMenuRadioItemProps = {
-  className?: string;
-  inset?: boolean;
-  children?: React.ReactNode;
   ref?: React.RefObject<HTMLButtonElement>;
 } & React.ComponentProps<typeof DropdownMenuPrimitive.RadioItem>;
 
@@ -192,9 +175,7 @@ const DropdownMenuRadioItem = ({
 DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName;
 
 type DropdownMenuLabelProps = {
-  className?: string;
   inset?: boolean;
-  children?: React.ReactNode;
   ref?: React.RefObject<HTMLButtonElement>;
 } & React.ComponentProps<typeof DropdownMenuPrimitive.Label>;
 
@@ -217,9 +198,6 @@ const DropdownMenuLabel = ({
 DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName;
 
 type DropdownMenuSeparatorProps = {
-  className?: string;
-  inset?: boolean;
-  children?: React.ReactNode;
   ref?: React.RefObject<HTMLButtonElement>;
 } & React.ComponentProps<typeof DropdownMenuPrimitive.Separator>;
 
