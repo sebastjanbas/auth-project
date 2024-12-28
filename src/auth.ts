@@ -14,6 +14,7 @@ declare module "next-auth" {
     user: {
       id: string
       role: "ADMIN" | "USER"
+      isTwoFactorEnabled: boolean
     } & DefaultSession["user"]
   } 
 }
@@ -77,6 +78,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (token.role && session.user) {
         session.user.role = token.role;
       }
+      if (session.user) {
+        session.user.isTwoFactorEnabled = token.isTwoFactorEnabled as boolean;
+      }
       return session
     },
 
@@ -87,6 +91,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (!user) return token;
 
       token.role = user.role;
+      token.isTwoFactorEnabled = user.isTwoFactorEnabled;
       return token
     },
   },
