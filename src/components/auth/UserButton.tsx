@@ -35,14 +35,8 @@ export const UserButton = () => {
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar className={avatarStyles.avatar}>
-          <AvatarImage
-            className={avatarStyles.fallback}
-            src={user?.image || ""}
-          />
-          <AvatarFallback
-            className={avatarStyles.fallback}
-            // className="bg-sky-500"
-          >
+          <AvatarImage className={avatarStyles.image} src={user?.image || ""} />
+          <AvatarFallback className={avatarStyles.fallback}>
             <FaUser className="text-white" />
           </AvatarFallback>
         </Avatar>
