@@ -1,7 +1,6 @@
 import { Poppins } from "next/font/google";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import LoginButton from "@/components/auth/LoginButton";
+import ModalToggle from "@/components/ModalToggle";
 
 const font = Poppins({ subsets: ["latin"], weight: ["600"] });
 
@@ -18,12 +17,11 @@ export default function Home() {
           🔐 Auth
         </h1>
         <p className="text-white text-lg">A simple authentication service</p>
-        <div>
-          <LoginButton>
-            <Button variant={"secondary"} size={"lg"}>
-              Sign in
-            </Button>
-          </LoginButton>
+        <div className="pt-10 flex flex-col justify-center items-center gap-2">
+          <ModalToggle />
+          <span className="text-white">
+            Press the switch to toggle modal log in form
+          </span>
         </div>
       </div>
     </main>

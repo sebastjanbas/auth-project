@@ -1,6 +1,5 @@
 "use client";
-import React, { startTransition, useState, useTransition } from "react";
-import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
+import React, { useState, useTransition } from "react";
 
 import * as z from "zod";
 import { CardWrapper } from "./CardWrapper";
@@ -22,7 +21,6 @@ import { FormError } from "../FormError";
 import { FormSuccess } from "../FormSuccess";
 import { login } from "@/actions/login";
 import Link from "next/link";
-import { link } from "fs";
 import {
   InputOTP,
   InputOTPGroup,
@@ -40,7 +38,7 @@ export const LoginForm = () => {
   const [showTwoFactor, setShowTwoFactor] = useState(false);
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
-  const [isPending, setTransition] = useTransition();
+  const [isPending, startTransition] = useTransition();
 
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),

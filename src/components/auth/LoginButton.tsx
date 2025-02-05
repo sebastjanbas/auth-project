@@ -1,7 +1,18 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useRouter } from "next/navigation";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
 import React from "react";
+import { LoginForm } from "./LoginForm";
 
 interface LoginButtonProps {
   children: React.ReactNode;
@@ -21,7 +32,15 @@ const LoginButton = ({
   };
 
   if (mode == "modal") {
-    return <span>TODO: Implement modal</span>;
+    return (
+      <Dialog>
+        <DialogTitle className="hidden" />
+        <DialogTrigger asChild={asChild}>{children}</DialogTrigger>
+        <DialogContent className="p-0 w-auto bg-transparent border-none">
+          <LoginForm />
+        </DialogContent>
+      </Dialog>
+    );
   }
 
   return (
