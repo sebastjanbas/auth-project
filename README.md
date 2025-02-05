@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Authentication Project
+
+This project is a full-featured authentication system built with **Next.js**, **Neon DB**, **Prisma ORM**, and **Auth.js**. It includes user authentication, admin testing, and user settings management.
+
+## Features
+
+- **User Authentication**: Sign up and log in using Auth.js.
+- **Dashboard**: Displays user information using both server and client components.
+- **Admin Testing**: A dedicated page to test admin credentials.
+- **User Settings**: Allows users to update their settings.
+- **Database**: Uses Neon DB with Prisma ORM for efficient data storage and retrieval.
+
+## Technologies Used
+
+- **Next.js** – React-based framework for server-side rendering and API handling.
+- **Neon DB** – Cloud-based PostgreSQL database.
+- **Prisma ORM** – Database ORM for type-safe and scalable queries.
+- **Auth.js** – Secure authentication provider.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Ensure you have the following installed:
+
+- **Node.js** (Latest LTS recommended)
+- **PostgreSQL** (Using Neon DB)
+- **Prisma** (Installed via npm)
+
+### Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/your-repo.git
+   cd your-repo
+   ```
+2. Install dependencies:
+
+```sh
+    npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Set up environment variables:
+   Create a .env file in teh root directory and add the following
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+DATABASE_URL="your_neon_db_url"
+NEXTAUTH_SECRET="your_auth_secret"
+NEXTAUTH_URL="http://localhost:3000"
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Run Prisma migrations:
 
-## Learn More
+```sh
+npx prisma migrate dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+5. Start the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sh
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License.
